@@ -13,14 +13,14 @@ We have 1000 different training images for each vegetable and 200 diferrent test
 
 Hence, this is a well balanced dataset
 
-#Image Preprocessing
+# Image Preprocessing
 Image processing aims to improve graphical information for human comprehension. Basic manipulation and filtering can also lead to better feature extraction knowledge. We can pick any vegetable we like, and a random image from the class will be displayed alongside a processed image
 
-#Data Visualization
+# Data Visualization
 We can start exploring the dataset and visualize any class label (for instance, Capsicum). You can choose any vegetable to visualize the images of that class. Changing rows and columns variable also results in different format positioning of matplotlib.
 
 
-#Building the model
+# Building the model
 In this project, we have trained the vegetable image dataset with CNN and used transfer learning (InceptionV3); we have observed that CNN showed less accuracy when using transfer learning. In the CNN model, we have added hidden layers, max pool, and dropout layers with activation of Relu and softmax. In the case of the InceptionV3 model, we have to use transfer learning, a pre-trained model, to classify the vegetables..
 
 CNN Model
@@ -39,5 +39,5 @@ Final Layer : dense_3
 Test_Data
 
 
-#Conclusion
+# Conclusion
 The false positives are really low as we have used transfer learning which has given us good accuracy!
