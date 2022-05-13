@@ -1,0 +1,350 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="/docs/4.0/assets/img/favicons/favicon.ico">
+
+    <title>Image Classification</title>
+
+    <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/jumbotron/">
+
+    <!-- Bootstrap core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+    <!-- Custom styles for this template -->
+    <link href="jumbotron.css" rel="stylesheet">
+    <style type="text/css">
+      .bgimg {
+          background-image: url("{{ url_for('static', filename='vegetables2.jpg') }}");
+      }
+      </style>
+   
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
+
+    <script>
+
+      // $(document).ready(function () {
+      //   if ($('#hdnlabel').text == "") {
+      //     $('#alldata').show(); $('#predictiondiv').hide();
+      //   }
+      //   else {
+      //     $('#alldata').hide(); $('#predictiondiv').show();
+      //     $('#predictiontext').text = ""
+      //     $('#hdnlabel').text == "a"
+      //   }
+
+      // });
+
+         $(document).ready(function () {
+         
+        if ($('#hdnlabel').html() == "") {
+          $('#alldata').show(); $('#predictiondiv').hide();
+          $('#hdnlabel').html == ""
+        }
+        else {
+          $('#alldata').hide(); $('#predictiondiv').show();
+          $('#predictiontext').text = ""
+         
+        }
+
+      });
+
+
+    </script>
+
+
+  </head>
+
+  <body>
+
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <a class="navbar-brand" href="#">Image Classification</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <span class="nav-link" id="homelink"  style="cursor: pointer;" onclick="$('#alldata').show();$('#predictiondiv').hide();" >Home <span class="sr-only">(current)</span></span>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" id="predictionlink" style="cursor: pointer;" onclick="$('#alldata').hide();$('#predictiondiv').show();" >Prediction <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+       
+      </div>
+    </nav>
+
+    <main role="main">
+
+      <!-- Main jumbotron for a primary marketing message or call to action -->
+      <div class="jumbotron bgimg">
+        <div class="container">
+          <br>
+          <h1 style="color:white;" class="display-3"><strong>Vegetable Image Classification</strong></h1>
+        </div>
+    </div>
+    <div id="alldata">
+        <div class="container">
+          <h1 class="display-4"> Intoduction
+            <hr>
+          </h1>
+          <p class="lead">
+            Vegetables are one of the most widely consumed foods in the world. Vegetables
+            are grown by people all around the world. According to a report , there are nearly
+            hundreds of thousands of vegetable species on our planet. Picking and sorting veggies, for example. And
+            distinguishing a vegetable in the market is difficult for the
+            client because different veggies have similar characteristics. To address this problem, vegetable picking, sorting,
+            and labeling must be automated using a vegetable
+            image classifier to save time and money. Fundamental research activity in the field
+            of agriculture nowadays is categorization and detection. There are many different
+            types of veggies, and many people are unfamiliar with them. As a result, the design
+            of a vegetable classifier will also give meaning to people's lives. </p>
+          <p class="lead">In addition, vegetable sorting is done by hand in supermarkets and distribution sites.
+            As a result, this study is being done to address these issues. The goal of this work
+            is to use CNN and pre-trained DCNN to more accurately classify vegetable photos
+            with transfer learning. Convolutional neural networks are commonly utilized in
+            classification, segmentation, and image recognition nowadays. Deep network design
+            is CNN's most powerful feature, allowing it to learn mid-to high-level concepts from
+            fresh data automatically. For vegetable picture classification, we provided a CNN
+            model as well as four, fine-tuned state of the art CNN architectures InceptionV3. A
+            comparison of the performance of CNN and its architectures is also carried out.
+        </div>
+          <br/><br/>
+          <div class="container">
+            <h1 class="display-4">DataSet Used <hr></h1>
+            <div class="row">
+              <div class="col-sm-6">
+               
+                <p class="lead">
+                  We have used an image data set containing 15 different types of vegetables. 
+                </p>
+                <p class="lead">We have 1000 different training images for each vegetable and 200 diferrent test images for each vegetable</p>
+                
+                <p class="lead">Hence, this is a well balanced dataset</p>
+              </div>
+              <div class="col-sm-6">
+                <img src="{{ url_for('static', filename='allfolders.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+            </div> <br/><br/>
+            </div>
+            <div class="container">
+                <h1 class="display-4"> Image Preprocessing <hr></h1>
+                <div class="row">
+                  <div class="col-sm-6">
+                   
+                    <p class="lead">
+                        Image processing aims to improve graphical information for human comprehension. Basic manipulation and filtering can also lead to better feature extraction knowledge. We can pick any vegetable we like, and a random image from the class will be displayed alongside a processed image
+                    </p>
+                  </div>
+                  <div class="col-sm-6">
+                    <img src="{{ url_for('static', filename='preprocessedimages.png') }}" class="img-fluid" alt="Test_Data">
+                  </div>
+                </div>
+            </div>
+            <br/><br/>
+            <div class="container">
+                <h1 class="display-4"> Data Visualization <hr></h1>
+                <div class="row">
+                    <p class="lead">
+                        We can start exploring the dataset and visualize any class label (for instance, Capsicum). You can choose any vegetable to visualize the images of that class. Changing rows and columns variable also results in different format positioning of matplotlib.
+                    </p>
+                    
+                  </div>
+                  <div class="row">
+                    <img src="{{ url_for('static', filename='sample1.png') }}" class="img-fluid" alt="Test_Data">
+                  </div>
+                  <br/>
+                  <div class="row">
+                    <p class="lead">
+                        Visualizing the whole dataset by picking a random image from each class inside training dataset.
+                    </p>
+                    
+                  </div>
+                  <div class="row">
+                    <img src="{{ url_for('static', filename='sample2.png') }}" class="img-fluid" alt="Test_Data">
+                  </div>
+            </div>
+            <br/><br/>
+        <div class="container">
+            <h1 class="display-4"> Building the model <hr></h1>
+            <div class="row">
+              <p class="lead">
+                In this project, we have trained the vegetable image dataset with CNN and used
+                transfer learning (InceptionV3); we have observed that CNN showed less accuracy
+                when using transfer learning. In the CNN model, we have added hidden layers, max
+                pool, and dropout layers with activation of Relu and softmax. In the case of the
+                InceptionV3 model, we have to use transfer learning, a pre-trained model, to classify
+                the vegetables..
+              </p>
+            </div>
+            <div class="row">
+              <h4>CNN Model</h4>
+              <img src="{{ url_for('static', filename='cnn_model_summary.png') }}" class="img-fluid" alt="Test_Data">
+            </div><br>
+            <div class="row"><h4>Model with Transfer Learning </h4></div>
+            <div class="row">              
+              <div class="col-sm-6">
+                <p class="lead">Total layers in the model : 315</p>
+                <p class="lead"> First layer : input_2</p>
+                <p class="lead">InceptionV3 layers : Layer 2 to Layer 311</p>
+                <p class="lead">Our fine tuned layers : ['global_average_pooling2d_1', 'dense_2', 'dropout_1']</p>
+                <p class="lead">Final Layer : dense_3</p>
+              </div>
+              <div class="col-sm-6">
+                <img src="{{ url_for('static', filename='model.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+            </div>
+        </div>
+        <br/><br/>
+        <br/><br/>
+        <div class="container">
+            <h1 class="display-4"> Training the model <hr></h1>
+            
+            <p class="lead">
+              It took a lot less time to train the model with transfer learning than the CNN model.
+            </p>
+            <div class="row">
+              
+                <img src="{{ url_for('static', filename='modeltrain.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+            
+        </div>
+        <br/><br/>
+        <div class="container">
+            <h1 class="display-4"> Model Accuracy and Loss <hr></h1>
+            <p class="lead">
+              We have recieved validation accuracy for both the models of about ~99%. 
+            </p>
+            <div class="row">
+              <h4>CNN Model</h4>
+            </div>
+              <div class="row">
+              <div class="col-sm-6">
+                <p class="lead">Train vs Validation Accuracy</p>
+                <img src="{{ url_for('static', filename='cnnmodelaccuracy.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+              <div class="col-sm-6">
+                <p class="lead">Train vs Validation Loss</p>
+                <img src="{{ url_for('static', filename='cnnmodelloss.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+            </div><br>
+
+            <div class="row">
+              <h4>Model with Transfer Learning</h4>
+            </div>
+              <div class="row">
+              <div class="col-sm-6">
+                <p class="lead">Train vs Validation Accuracy</p>
+                <img src="{{ url_for('static', filename='modelaccuracy.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+              <div class="col-sm-6">
+                <p class="lead">Train vs Validation Loss</p>
+                <img src="{{ url_for('static', filename='modelloss.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+            </div>
+        </div>
+        <br/><br/>
+        <div class="container">
+            <h1 class="display-4"> Validation accuracy for each folder <hr></h1>
+            <div class="row">
+              
+                <img src="{{ url_for('static', filename='validation_folders.png') }}" class="img-fluid" alt="Test_Data">
+              </div>  
+        </div>
+        <br/><br/>
+        <div class="container">
+            <h1 class="display-4">Model Evaludation<hr></h1>
+            <div class="row">
+                <p class="lead">We have used Confusion Matrix for evaluating the performance of our classification model.</p>
+                <img src="{{ url_for('static', filename='conf_matrix.png') }}" class="img-fluid" alt="Test_Data">
+              </div>  
+        </div>
+        <br/><br/>
+        
+        <div class="container">
+            <h1 class="display-4">Visualizing incorrect images<hr></h1>
+            <p class="lead">Visualizing some incorrect images predicted for a particular vegetable category by our classifier.</p>
+
+            <div class="row">
+                <p class="lead">Cabbage</p>
+                <img src="{{ url_for('static', filename='incorrect_cabbage.png') }}" class="img-fluid" alt="Test_Data">
+              </div> 
+              <div class="row">
+                <p class="lead">Tomato</p>
+                <img src="{{ url_for('static', filename='incorrect_tomatoes.png') }}" class="img-fluid" alt="Test_Data">
+              </div>
+            </div>
+       
+        <br/><br/>
+        <div class="container">
+            <h1 class="display-4">Conclusion<hr></h1>
+            <div class="row">
+                <p class="">As we can see, the false positives are really low as we have used transfer learning which has given us good accuracy!</p>
+              </div>  
+        </div>
+        <br/><br/>
+  
+    </div>
+      <div class="container" id="predictiondiv" style="display: none;">
+                <h1 class="text-center display-4"><span><img src="{{ url_for('static', filename='prediction.png') }}" class="img-fluid" alt="Test_Data"></span> &nbsp; Image Preditcion</h1>
+                <br>
+                <form class="p-3 text-center" action="/" method="post" enctype="multipart/form-data">
+                  <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text" id="basic-addon1">Select the Image file</span>
+                    </div>
+                    <input class="form-control" id="ddl_file" type="file" name="imagefile">
+                  </div>
+                  <br>
+                    <input  type="submit" id="myBtn"  value="Predict Image"  class="btn btn-primary btn-lg " data-loading-text="<i class='fa fa-circle-o-notch fa-spin'></i> Processing">
+                </form>
+                
+                <div class="row">
+<br>
+                </div>
+                {% if prediction_cnn %}
+                <p  id="predictiontext"  class="display-4 text-center">Prediction from CNN model:-"{{prediction_cnn}}"</p>
+                {% endif %}
+
+                {% if prediction_tl %}
+                    <p  id="predictiontext"  class="display-4 text-center">Prediction from Transfer learning model:-"{{prediction_tl}}"</p>
+                {% endif %}
+
+             
+
+                <br><br><br><br><br><br><br><br><br><br><br><br><br>
+
+                
+      </div>
+    
+        <hr>
+
+      <label display="none" id="hdnlabel" >{{prediction_cnn}}</label>
+
+     
+
+    </main>
+
+    <footer class="container">
+      <p>&copy; NARS 2022</p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"  integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" ><\/script>')</script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+
+  </body>
+</html>
